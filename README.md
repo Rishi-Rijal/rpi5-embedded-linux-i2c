@@ -5,7 +5,7 @@ This repository contains the architecture and configuration for a custom-built E
 
 ---
 
-## 🚀 Project Overview
+## Project Overview
 The goal of this learning unit is to bypass standard OS distributions and use **Buildroot** to create a tailored, minimal Linux image for the **Raspberry Pi 5**, focusing on:
 - **Direct Hardware Mapping:** Using Device Tree Overlays (DTOs).
 - **Driver Abstraction:** Implementing userspace I2C communication.
