@@ -1,26 +1,43 @@
-Buildroot is a simple, efficient and easy-to-use tool to generate embedded
-Linux systems through cross-compilation.
+# Sensors & Systems - Building the Embedded Future
+## Track B: The Embedded Linux Architect (Raspberry Pi 5)
 
-The documentation can be found in docs/manual. You can generate a text
-document with 'make manual-text' and read output/docs/manual/manual.text.
-Online documentation can be found at https://buildroot.org/docs.html
+This repository contains the architecture and configuration for a custom-built Embedded Linux environment designed to teach students the bridge between software and silicon via I2C sensor integration.
 
-To build and use the buildroot stuff, do the following:
+---
 
-1) run 'make menuconfig'
-2) select the target architecture and the packages you wish to compile
-3) run 'make'
-4) wait while it compiles
-5) find the kernel, bootloader, root filesystem, etc. in output/images
+## 🚀 Project Overview
+The goal of this learning unit is to bypass standard OS distributions and use **Buildroot** to create a tailored, minimal Linux image for the **Raspberry Pi 5**, focusing on:
+- **Direct Hardware Mapping:** Using Device Tree Overlays (DTOs).
+- **Driver Abstraction:** Implementing userspace I2C communication.
+- **Pedagogy:** Creating "Broken Lab" scenarios for student debugging.
 
-You do not need to be root to build or run buildroot.  Have fun!
+---
 
-Buildroot comes with a basic configuration for a number of boards. Run
-'make list-defconfigs' to view the list of provided configurations.
+## 🛠 Project Roadmap
 
-Please feed suggestions, bug reports, insults, and bribes back to the
-buildroot mailing list: buildroot@buildroot.org
-You can also find us on #buildroot on OFTC IRC.
+### Phase 1: Infrastructure (COMPLETED)
+- [x] **Host Environment:** Configured Fedora-based build system with required cross-compilation dependencies.
+- [x] **Toolchain:** Generated a custom AArch64 toolchain.
+- [x] **Minimal OS:** Built a hardened Linux Kernel (BCM2712) and root filesystem.
+- [x] **Base Validation:** Integrated `i2c-tools` for hardware discovery.
 
-If you would like to contribute patches, please read
-https://buildroot.org/manual.html#submitting-patches
+### Phase 2: Sensor Integration (IN PROGRESS)
+- [ ] **Hardware Mapping:** Writing Device Tree Overlays (`.dts`) to bind sensors to the I2C bus.
+- [ ] **DTCO Workflow:** Compiling overlays into `.dtbo` blobs.
+- [ ] **Connectivity:** Physical wiring and bus verification.
+
+### Phase 3: The "Golden Reference" Implementation
+- [ ] **Driver Logic:** Developing a robust C implementation using `linux/i2c-dev.h`.
+- [ ] **Manual Drafting:** Creating the step-by-step Student Lab Manual.
+
+### Phase 4: Debugging & Delivery
+- [ ] **Broken Lab Design:** Creating intentional configuration errors (e.g., wrong I2C address, missing clock config).
+- [ ] **Final Packaging:** Delivering the SD card images and documentation.
+
+---
+
+## 🔧 How to Reproduce
+1. Install dependencies on Fedora:
+   `sudo dnf install patch perl-ExtUtils-MakeMaker perl-Time-Piece ncurses-devel diffutils rsync wget cpio`
+2. Run `make rpi5_lab_defconfig` (to be uploaded).
+3. Run `make -j$(nproc)`.

@@ -14,3 +14,18 @@
 *~
 *.pyc
 /br.log
+
+# Ignore the heavy build artifacts
+output/
+build/
+dl/
+host/
+
+# Ignore the actual generated SD image (too big for GitHub)
+*.img
+*.dtbo
+
+# Ignore temporary files
+*.o
+*.swp
+.config.old
